@@ -8,11 +8,11 @@ class CallApi {
   final String _ckIpv4 = 'https://lms.smsaccess.net/';
 
   //DLCES DOMAINS
-  // final String _domain = 'https://hsa.cklms.ph/api/'; - done
+  final String _domain = 'https://hsa.cklms.ph/api/';
   // final String _domain = 'https://ica.cklms.ph/api/'; - done
   // final String _domain = 'https://saa.cklms.ph/api/'; - done
   // final String _domain = 'https://sja.cklms.ph/api/'; - done
-  final String _domain = 'https://sjid.cklms.ph/api/';
+  // final String _domain = 'https://sjid.cklms.ph/api/';
   // final String _domain = 'https://sjhs.cklms.ph/api/'; - done
   // final String _domain = 'https://sla.cklms.ph/api/'; - done
   // final String _domain = 'https://saa-bacarra.cklms.ph/api/'; - done

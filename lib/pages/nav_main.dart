@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:ict_ebook_hsa/app_util.dart';
 import 'package:ict_ebook_hsa/pages/all_books.dart';
 import 'package:ict_ebook_hsa/provider/navigation_provider.dart';
@@ -28,25 +29,25 @@ class NavMain extends StatefulWidget {
 }
 
 class _NavMainState extends State<NavMain> {
-  Color theme = AppUtil().schoolSecondary();
-
   @override
   void initState() {
+    changeStatusBarColor(Colors.grey.shade900);
     getUser();
-    changeStatusBarColor(AppUtil().schoolSecondary());
     super.initState();
   }
 
-  void changeStatusBarColor(backgroundColor) async {
-    if (!kIsWeb) {
-      await FlutterStatusbarcolor.setStatusBarColor(backgroundColor);
-
-      // Determine if the background color is dark and set the status bar text color accordingly
-      if (useWhiteForeground(backgroundColor)) {
-        FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-      } else {
-        FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+  changeStatusBarColor(Color color) async {
+    try {
+      if (!kIsWeb) {
+        await FlutterStatusbarcolor.setStatusBarColor(color);
+        if (useWhiteForeground(color)) {
+          FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+        } else {
+          FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+        }
       }
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
     }
   }
 
@@ -71,11 +72,16 @@ class _NavMainState extends State<NavMain> {
           builder: (BuildContext context, BoxConstraints constraints) {
         bool isWide = constraints.maxWidth > 500;
 
+        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: Colors.white, // Color for Android
+            statusBarBrightness:
+                Brightness.dark // Dark == white status bar -- for IOS.
+            ));
         return Scaffold(
           drawer: const NavigationDrawerWidget(),
           appBar: AppBar(
             elevation: 4.0,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
             toolbarHeight: constraints.maxWidth > 1000 ? 80 : 70,
             leadingWidth: constraints.maxWidth > 1000 ? 10 : null,
             leading:
@@ -90,8 +96,8 @@ class _NavMainState extends State<NavMain> {
                 ),
                 gradient: LinearGradient(
                   colors: [
-                    theme,
-                    theme,
+                    AppUtil().schoolSecondary(),
+                    AppUtil().schoolSecondary(),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

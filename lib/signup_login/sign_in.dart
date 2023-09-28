@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:ict_ebook_hsa/api/my_api.dart';
 import 'package:ict_ebook_hsa/app_util.dart';
 import 'package:ict_ebook_hsa/pages/nav_main.dart';
@@ -39,7 +40,11 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
-
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white, // Color for Android
+        statusBarBrightness:
+            Brightness.dark // Dark == white status bar -- for IOS.
+        ));
     return Scaffold(
       body: OrientationBuilder(builder: (context, orientation) {
         bool isLandscape = orientation == Orientation.landscape;

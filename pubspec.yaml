@@ -2,7 +2,7 @@ name: ict_ebook_hsa
 description: A new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.1+0
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
@@ -38,6 +38,7 @@ dependencies:
   concentric_transition: ^1.0.3
   connectivity_plus: ^4.0.2
   getwidget: ^4.0.0
+  rename: ^3.0.0
 
 dev_dependencies:
   flutter_test:

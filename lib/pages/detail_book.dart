@@ -78,6 +78,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
     initDiskSpacePlus();
     _fetchParts();
     checkIfBookExist();
+
     super.initState();
   }
 

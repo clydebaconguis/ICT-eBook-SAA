@@ -5,23 +5,23 @@ import 'package:path_provider/path_provider.dart';
 
 class AppUtil {
   schoolAbbv() {
-    return "SNABI";
+    return "HSA";
   }
 
   schoolPrimary() {
-    return const Color(0xFF05904A);
+    return const Color(0xFF7A110A);
   }
 
   schoolSecondary() {
-    return Colors.grey[900];
+    return const Color(0xFF212121);
   }
 
   schoolName() {
-    return "Sto. Niño Academy of Baroy, Inc.";
+    return "Holy Spirit Academy of Laoag";
   }
 
   schoolAddress() {
-    return "Baroy, Lanao del Norte, Baroy, Philippines";
+    return "Brgy. 14, Laoag City, Ilocos Norte";
   }
 
   readBooks() async {
